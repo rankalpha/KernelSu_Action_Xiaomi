@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build Kernel by ${{ github.actor }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
@@ -211,9 +211,11 @@ jobs:
 
     - name: Install GCC-9
       run: |
-        #sudo apt-get install gcc-9 g++-9
-        #sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
-        #sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
+        gcc --version
+        g++ --version
+        sudo apt-get install gcc-9 g++-9
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9
         gcc --version
         g++ --version
     
